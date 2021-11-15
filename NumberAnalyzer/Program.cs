@@ -28,18 +28,23 @@ namespace NumberAnalyzer
             }
 
             // output result
-            Console.Write("\n" + name + ", the number is {0} and", n);
+            Console.Write("\n" + name + ", the number {0} is", n);
             switch (n % 2)
             {
                 case 0:
+                    // even cases
                     Console.Write(" even");
-                    if (n > 1 && n < 25) Console.Write(" and less than 25");
+                    if (n > 1 && n < 25) Console.Write(" and less than 25.\n");
+                    else if (n <= 60) Console.Write(" and between 26 and 60 inclusive.\n");
+                    else Console.Write(" and greater than 60.\n");
                     break;
                 case 1:
+                    // odd cases
                     Console.Write(" odd");
+                    if (n < 60) Console.Write(" and less than 60.\n");
+                    else Console.Write(" and greater than 60.\n");
                     break;
             }
-            Console.WriteLine();
         }
     }
 }
