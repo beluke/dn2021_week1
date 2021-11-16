@@ -56,7 +56,7 @@ namespace Exponents
 
                 // format and output table headers
                 Console.WriteLine("┌{0," + width + "}┐ ┌{0," + width + "}┐ ┌{0," + width + "}┐", hr);
-                Console.WriteLine("│{0," + width + "}│ │{1," + width + "}│ │{2," + width + "}│", "Number", "Squared", "Cubed");
+                Console.WriteLine("│{0,-" + width + "}│ │{1,-" + width + "}│ │{2,-" + width + "}│", "Number", "Squared", "Cubed");
                 Console.WriteLine("├{0," + width + "}┤ ├{0," + width + "}┤ ├{0," + width + "}┤", hr);
 
                 // calculate values, format and output table body
