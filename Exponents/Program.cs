@@ -67,7 +67,7 @@ namespace Exponents
                 Console.WriteLine("└{0," + width + "}┘ └{0," + width + "}┘ └{0," + width + "}┘", hr);
 
                 // prompt user to continue
-                Console.Write("Continue? ([y]es/[n]o) (default = n) ");
+                Console.Write("Continue? (y/n) (default = n) ");
 
             } while (Console.ReadLine().ToLower() == "y");
             
