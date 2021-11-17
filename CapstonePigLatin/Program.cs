@@ -47,7 +47,7 @@ namespace CapstonePigLatin
                     int idx = Regex.Match(word, "^([^aeiou]*)").Length;
 
                     // generate new string while minding location of period
-                    // if period is in middle, ignore it, otherwise add it to end
+                    // if period is in middle, ignore it, otherwise move it to end
                     if (word.IndexOf(".") == word.Length - 1)
                         word = idx > 0 ? word[idx..(word.Length - 1)] + word[0..idx] + "ay." : word[0..(word.Length - 1)] + "way.";
                     else
