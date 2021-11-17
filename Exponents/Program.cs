@@ -34,11 +34,12 @@ namespace Exponents
                         // parse number from input
                         num = int.Parse(input);
                         // throw exception if number is not within bounds
-                        if (num < 0 || num > 1290)
+                        if (num <= 0 || num > 1290)
                             throw new Exception("Number is not within bounds.");
                     }
                     catch (Exception e)
                     {
+                        // repeat loop if exception caught
                         Console.WriteLine(e.Message);
                         continue;
                     }
@@ -47,28 +48,39 @@ namespace Exponents
                     break;
                 } while (true);
 
-                // calculate table horizontal width minus 2 edges
-                // if number uses n characters then width is (n + (n * 2)), assuming n is greater than 2
-                // because longest header title is 7 characters so shortest total table width is 9
-                int width = (input.Length > 2) ? input.Length + (input.Length * 2) : 7;
-                // create horizontal rule of size width
-                string hr = new string('─', width);
+                
+                // amount of padding to use for centering table header
+                // used for centering cubed header
+                int padding = new Func<int>(() => {
+                    // use largest number length as measure, 5 is minimum
+                    int x = $"{num * num * num}".Length > 5 ? $"{num * num * num}".Length : 5;
+                    return (x / 2) + ((x / 2) % 2);
+                })();
 
-                // format and output table headers
-                Console.WriteLine("┌{0," + width + "}┐ ┌{0," + width + "}┐ ┌{0," + width + "}┐", hr);
-                Console.WriteLine("│{0,-" + width + "}│ │{1,-" + width + "}│ │{2,-" + width + "}│", "Number", "Squared", "Cubed");
-                Console.WriteLine("├{0," + width + "}┤ ├{0," + width + "}┤ ├{0," + width + "}┤", hr);
+                // generate border using width w minus
+                string hr(int w) => new string('─', w);
+                // generate padding
+                string pad() => new string(' ', padding / 2);
 
-                // calculate values, format and output table body
+                // format and output table headers with borders
+                Console.WriteLine($"┌{{0,-8}}┬{{1,-9}}┬{{2,-{5+padding}}}┐", hr(8), hr(9), hr(5+padding));
+                Console.WriteLine($"│{{0,-8}}│{{1,-9}}│{{2,-{5+padding}}}│", " Number ", " Squared ", $"{pad()}Cubed{pad()}");
+                Console.WriteLine($"├{{0,-8}}┼{{1,-9}}┼{{2,-{5+padding}}}┤", hr(8), hr(9), hr(5+padding));
+
+                // calculate values, format and output table body width left and right borders
                 for (int i = 1; i <= num; ++i)
-                    Console.WriteLine("│{0," + width + "}│ │{1," + width + "}│ │{2," + width + "}│", i, i * i, i * i * i);
+                {
+                    Console.WriteLine($"│{{0,8}}│{{1,9}}│{{2,{5 + padding}}}│", i, i * i, i * i * i);
+                    if (i + 1 <= num) Console.WriteLine($"├{{0,-8}}┼{{1,-9}}┼{{2,-{5+padding}}}┤", hr(8), hr(9), hr(5+padding));
+                }
 
-                // format and output table footer
-                Console.WriteLine("└{0," + width + "}┘ └{0," + width + "}┘ └{0," + width + "}┘", hr);
+                // format and output table bottom border
+                Console.WriteLine($"└{{0,-8}}┴{{1,-9}}┴{{2,-{5+padding}}}┘", hr(8), hr(9), hr(5+padding));
 
                 // prompt user to continue
                 Console.Write("Continue? (y/n) (default = n) ");
 
+            // continue loop only if input is 'y'
             } while (Console.ReadLine().ToLower() == "y");
             
         }
