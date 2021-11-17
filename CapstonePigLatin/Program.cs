@@ -43,7 +43,7 @@ namespace CapstonePigLatin
                     if (word.Equals(word.ToUpper())) allUpper = true;
                     else if (word[0].Equals(char.ToUpper(word[0]))) titleCase = true;
 
-                    // get length of beginning consonant cluster
+                    // get length of beginning consonant cluster (using as index for substring)
                     int idx = Regex.Match(word, "^([^aeiou]*)").Length;
 
                     // generate new string while minding location of period
@@ -53,12 +53,17 @@ namespace CapstonePigLatin
                     else
                         word = idx > 0 ? word[idx..] + word[0..idx] + "ay" : word[0..] + "way";
 
-                    // conver string to lower
-                    word = word.ToLower();
-                    
+
                     // fix case
-                    if (titleCase) word = char.ToUpper(word[0]) + word[1..];
-                    else if (allUpper) word = word.ToUpper();
+                    if (titleCase)
+                    {
+                        word = word.ToLower();
+                        word = char.ToUpper(word[0]) + word[1..];
+                    }
+                    else if (allUpper)
+                    {
+                        word = word.ToUpper();
+                    }
 
                     // return word
                     return word;
