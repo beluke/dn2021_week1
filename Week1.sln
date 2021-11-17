@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberAnalyzer", "NumberAna
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exponents", "Exponents\Exponents.csproj", "{1973689F-D475-41A3-A628-149A78F352C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapstonePigLatin", "CapstonePigLatin\CapstonePigLatin.csproj", "{9DD2CFE7-AE1C-4EBF-AFB9-0EBE04F8B5FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CapstonePigLatin", "CapstonePigLatin\CapstonePigLatin.csproj", "{9DD2CFE7-AE1C-4EBF-AFB9-0EBE04F8B5FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorialCalculator", "FactorialCalculator\FactorialCalculator.csproj", "{A45DF617-3AB9-423B-A66D-FE17AE34201F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{9DD2CFE7-AE1C-4EBF-AFB9-0EBE04F8B5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DD2CFE7-AE1C-4EBF-AFB9-0EBE04F8B5FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DD2CFE7-AE1C-4EBF-AFB9-0EBE04F8B5FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A45DF617-3AB9-423B-A66D-FE17AE34201F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A45DF617-3AB9-423B-A66D-FE17AE34201F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A45DF617-3AB9-423B-A66D-FE17AE34201F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A45DF617-3AB9-423B-A66D-FE17AE34201F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
