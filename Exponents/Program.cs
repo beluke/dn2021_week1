@@ -57,14 +57,14 @@ namespace Exponents
                     return (x / 2) + ((x / 2) % 2);
                 })();
 
-                // generate border using width w minus
+                // generate border using width w
                 string hr(int w) => new string('─', w);
-                // generate padding
-                string pad() => new string(' ', padding / 2);
+                // generate string with padding on sides
+                string pad(string s) => new string(' ', padding / 2) + s + new string (' ', padding / 2);
 
                 // format and output table headers with borders
                 Console.WriteLine($"┌{{0,-8}}┬{{1,-9}}┬{{2,-{5+padding}}}┐", hr(8), hr(9), hr(5+padding));
-                Console.WriteLine($"│{{0,-8}}│{{1,-9}}│{{2,-{5+padding}}}│", " Number ", " Squared ", $"{pad()}Cubed{pad()}");
+                Console.WriteLine($"│{{0,-8}}│{{1,-9}}│{{2,-{5+padding}}}│", " Number ", " Squared ", pad("Cubed"));
                 Console.WriteLine($"├{{0,-8}}┼{{1,-9}}┼{{2,-{5+padding}}}┤", hr(8), hr(9), hr(5+padding));
 
                 // calculate values, format and output table body width left and right borders
