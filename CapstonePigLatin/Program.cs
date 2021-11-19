@@ -42,14 +42,30 @@ namespace CapstonePigLatin
                     // update case flags
                     if (word.Equals(word.ToUpper())) allUpper = true;
                     else if (word[0].Equals(char.ToUpper(word[0]))) titleCase = true;
-
+                    
+                    // get length of word before puncation
+                    int punc = Regex.Match(word, "^(.*[.,!?])").Length;
                     // get length of beginning consonant cluster (using as index for substring)
                     int idx = Regex.Match(word, "^([^aeiou]*)").Length;
 
                     // generate new string while minding location of period
                     // if period is in middle, ignore it, otherwise move it to end
-                    if (word.IndexOf(".") == word.Length - 1)
-                        word = idx > 0 ? word[idx..(word.Length - 1)] + word[0..idx] + "ay." : word[0..(word.Length - 1)] + "way.";
+                    if (punc > 0)
+                    {
+                        string temp = "";
+                        int count = 0;
+                        foreach (string w in word.Split(word[punc-1]))
+                        {
+                            if (w.Length > 0) {
+                                int i = Regex.Match(w, "^([^aeiou]*)").Length;
+                                temp += (i > 0) ? w[i..] + w[0..i] + "ay" + word[punc - 1] : w[0..i] + "way" + word[punc - 1];
+                                count++;
+                            }
+                        }
+                        
+                        // get rid of extra punctuation
+                        word = (count == word.Split(word[punc - 1]).Length) ? temp[0..(temp.Length - 1)] : temp;
+                    }
                     else
                         word = idx > 0 ? word[idx..] + word[0..idx] + "ay" : word[0..] + "way";
 
